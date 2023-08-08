@@ -1,0 +1,63 @@
+*uuid-nvim.txt* Lua powered UUID generation in Neovim
+
+==============================================================================
+CONTENTS                                                        *uuid-nvim*
+
+1. Introduction          |uuid-nvim-introduction|
+2. Configuration         |uuid-nvim-configuration|
+3. Commands              |uuid-nvim-commands|
+4. Functions             |uuid-nvim-functions|
+5. Installation          |uuid-nvim-installation|
+
+==============================================================================
+INTRODUCTION                                                *uuid-nvim-introduction*
+
+uuid-nvim helps you generate and insert UUIDs in Neovim.
+
+Note: The Lua random number generator is not cryptographically secure and
+should not be used in a production environment.
+
+==============================================================================
+CONFIGURATION                                               *uuid-nvim-configuration*
+
+You can set up the plugin using the following fields:
+
+- case:        string|nil The case of the UUID; "lower" or "upper".
+- quotes:      string|nil The type of quotes; "double", "single", or "none".
+- prefix:      string|nil The prefix to prepend to the UUID.
+- suffix:      string|nil The suffix to append to the UUID.
+- templates:   table|nil  The templates used to generate UUIDs.
+- templates.v4:string|nil The template used to generate a v4 UUID.
+
+Example:
+>
+    require("uuid-nvim").setup({
+      case = "upper",
+      quotes = "single",
+      suffix = ","
+    })
+<
+
+==============================================================================
+COMMANDS                                                    *uuid-nvim-commands*
+
+- :UuidV4                 Insert a v4 UUID at the current cursor position.
+- :UuidToggleHighlighting Toggle the UUID highlighting.
+
+==============================================================================
+FUNCTIONS                                                   *uuid-nvim-functions*
+
+- setup(opts)         Set the configuration.
+- get_setup()         Get the current configuration.
+- get_v4(opts)        Generate a v4 UUID.
+- insert_v4(opts)     Insert a v4 UUID at the current cursor position.
+- toggle_highlighting Toggle UUID highlighting.
+
+==============================================================================
+INSTALLATION                                                *uuid-nvim-installation*
+
+Refer to the README for installation instructions.
+
+==============================================================================
+vim:tw=78:ts=8:noet:ft=help:norl:
+

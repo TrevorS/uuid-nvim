@@ -9,6 +9,7 @@
 local uuid_nvim_setup = {
   case = "lower",
   quotes = "double",
+  insert = "after",
   prefix = "",
   suffix = "",
   templates = {
@@ -33,6 +34,11 @@ local function validate_config(config)
   local valid_quotes = { double = true, single = true, none = true }
   if config.quotes and not valid_quotes[config.quotes] then
     error("Invalid 'quotes' value. Must be 'double', 'single', or 'none'.")
+  end
+
+  local valid_insert_options = { before = true, after = true }
+  if config.insert and not valid_insert_options[config.insert] then
+    error("Invalid 'insert' value. Must be 'before' or 'after'.")
   end
 
   if config.prefix and type(config.prefix) ~= "string" then
@@ -112,8 +118,9 @@ end
 --- @param opts UuidNvimSetup configuration overrides
 M.insert_v4 = function(opts)
   local uuid = M.get_v4(opts)
+  local after = uuid_nvim_setup.insert == "after"
 
-  vim.api.nvim_put({ uuid }, "c", true, true)
+  vim.api.nvim_put({ uuid }, "c", after, true)
 end
 
 M.toggle_highlighting = function()

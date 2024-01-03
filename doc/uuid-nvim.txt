@@ -24,6 +24,7 @@ You can set up the plugin using the following fields:
 
 - case:        string|nil The case of the UUID; "lower" or "upper".
 - quotes:      string|nil The type of quotes; "double", "single", or "none".
+- insert:      string|nil Puts the UUID either "after" or "before" cursor.
 - prefix:      string|nil The prefix to prepend to the UUID.
 - suffix:      string|nil The suffix to append to the UUID.
 - templates:   table|nil  The templates used to generate UUIDs.
